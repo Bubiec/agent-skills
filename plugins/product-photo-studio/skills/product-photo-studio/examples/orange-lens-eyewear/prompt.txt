@@ -3,10 +3,10 @@ REFERENCE IMAGES (in the order supplied)
 - Image 2: colour sample. Take only the colour from it, not its shape, background or lighting.
 - Image 3: logo artwork. Reproduce it exactly; it is an approved mark, not a design suggestion.
 
-Create one premium, photorealistic CGI product render of the eyeglasses shown in Image 1.
+Create one premium, photorealistic image of the eyeglasses shown in Image 1, in the requested presentation.
 
 PRODUCT LOCK
-Treat Image 1 as a measured object, not as inspiration. Preserve its exact geometry, proportions, materials, construction details and surface finish, including the frame shape, lens shape, bridge, hinges, temple arms, nose pads and frame thickness. Do not redesign, simplify, stylize, improve or reinterpret the product. Do not add, remove or duplicate any part.
+Treat Image 1 as the source of product identity, not as design inspiration. Preserve its geometry, proportions, materials, construction details and surface finish, including the frame shape, lens shape, bridge, hinges, temple arms, nose pads and frame thickness. For requested wearing or handling, allow physically necessary drape or articulation without changing the product's construction. Do not redesign, simplify, stylize, improve or reinterpret the product. Do not add, remove or duplicate any part.
 
 CAMERA AND PRODUCT PERSPECTIVE
 Orientation rule for this whole prompt: "left" and "right" mean the left and right side of the finished image as the viewer sees it, never the wearer's left and right.

@@ -1,0 +1,32 @@
+REFERENCE IMAGES (in the order supplied)
+- Image 1: the product. Copy it exactly.
+- Image 2: approved adult-person reference: use the requested appearance and pose for the PERSON section. Product identity comes from the product reference.
+
+Create one premium, photorealistic image of the canvas shoulder bag shown in Image 1, in the requested presentation.
+
+PRODUCT LOCK
+Treat Image 1 as the source of product identity, not as design inspiration. Preserve its geometry, proportions, materials, construction details and surface finish, including the panel seams, strap attachment points, buckle, pocket count and canvas texture. For requested wearing or handling, allow physically necessary drape or articulation without changing the product's construction. Do not redesign, simplify, stylize, improve or reinterpret the product. Do not add, remove or duplicate any part.
+
+CAMERA: PRODUCT ON A PERSON
+4:5 image. Camera viewpoint: eye-level front three-quarter view
+Framing: adult from shoulders to mid-thigh, with the whole bag and its strap visible
+Focus: the bag's fabric, hardware and attachment points
+
+Compose the adult and product together while keeping the product readable at a physically plausible scale. Do not enlarge, mirror or rotate product features just to make them more visible. Left and right mean the viewer's left and right in the finished image.
+
+PERSON AND PRODUCT INTERACTION
+Show this adult: an adult wearing a plain unbranded shirt
+Use Image 2 for the approved appearance and pose described here, not for the product's identity or design.
+Product interaction: wearing the bag on one shoulder, strap resting on the shoulder and bag supported naturally at the hip
+Physical scale / fit: 32 cm wide and 24 cm high, as specified in this illustrative brief; do not enlarge it to fill the frame
+
+Preserve the product in Image 1. Allow natural drape, articulation or material deformation needed for the requested use, without changing its construction, markings or proportions. Keep contact points, grip, weight and support physically plausible. A worn item must follow the relevant body surface; a held item must be supported by a plausible grip. Keep anatomy coherent and the product area that matters visible.
+
+SCENE AND LIGHT
+Place the product and any requested person in this environment: a simple studio with a neutral grey backdrop
+Lighting: soft daylight from camera left with coherent contact shadows
+Keep the scene consistent in perspective, shadows, reflections and physical scale. Do not add unrequested products, logos or advertising copy.
+
+TEXT AND EXCLUSIONS FOR A PERSON SCENE
+No captions, badges, watermarks or unrequested branding. Preserve only the marks physically present on the product or explicitly described in the LOGO section.
+No extra people, duplicated products, impossible anatomy, fingers passing through objects, floating straps, unsupported objects or merged body/product parts. Keep hands and body parts only where the requested interaction and framing call for them.

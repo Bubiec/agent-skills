@@ -5,11 +5,12 @@ A prompt is assembled from one module per section, in this order:
 | Section | What it controls | Modules |
 |---|---|---|
 | `product` | what to copy and what must not change | `product-lock` (default) |
-| `camera` | angle, lens, framing, scale | `eyewear-three-quarter-low`, `three-quarter-studio`, `macro-detail` |
-| `background` | background and light | `pure-white` |
+| `camera` | angle, perspective reference, framing, focus | `reference-perspective`, `person-context`, `eyewear-three-quarter-low`, `three-quarter-studio`, `macro-detail` |
+| `person` | adult subject, wearing/holding/using, scale and fit | `product-use` |
+| `background` | background and light | `pure-white`, `environment` |
 | `color_lock` | exact colour of one part | `translucent-tint`, `solid-finish` |
 | `logo` | logo handling | `preserve`, `replace` |
-| `exclusions` | what must not appear | `isolated-product` |
+| `exclusions` | what must not appear | `isolated-product`, `person-product` |
 
 Modules are plain text files in `assets/modules/<section>/<name>.md`. The builder replaces placeholders from the job file and fails on any it cannot fill.
 
@@ -20,7 +21,7 @@ Modules are plain text files in `assets/modules/<section>/<name>.md`. The builde
 | `{{section.key}}` | the value from the job file |
 | `{{section.key\|upper}}` | upper-cased value (for headings) |
 | `{{section.key\|or}}` | a list as "a, b or c" (`\|and` gives "a, b and c") |
-| `{{ref.product}}`, `{{ref.color_lock}}`, `{{ref.logo}}` | "Image N", numbered in the order the images are sent |
+| `{{ref.product}}`, `{{ref.camera}}`, `{{ref.person}}`, `{{ref.color_lock}}`, `{{ref.logo}}` | "Image N", numbered in the order the images are sent; omitted slots do not consume a number |
 | `[[if section.key]]text` | the line is kept only when that key is set |
 
 ## Writing a new module

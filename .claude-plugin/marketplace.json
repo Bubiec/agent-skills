@@ -6,16 +6,22 @@
   },
   "metadata": {
     "description": "Agent skills from building and running AI-managed online stores.",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "plugins": [
     {
       "name": "product-photo-studio",
       "source": "./plugins/product-photo-studio",
-      "description": "Product images from a real product photo with Gemini on Vertex AI: intake interview, modular prompt builder with colour and logo locks, free request previews and local request limits.",
-      "version": "0.1.0",
+      "description": "Product packshots, perspective-matched renders and on-person images with Gemini on Vertex AI: modular prompts, reference roles, free request previews and local request limits.",
+      "version": "0.2.0",
       "category": "design",
-      "keywords": ["product-photography", "ecommerce", "image-generation", "gemini", "vertex-ai"]
+      "keywords": [
+        "product-photography",
+        "ecommerce",
+        "image-generation",
+        "gemini",
+        "vertex-ai"
+      ]
     }
   ]
 }

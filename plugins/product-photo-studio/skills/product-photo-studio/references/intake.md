@@ -14,6 +14,18 @@ Ask these in one message, grouped, with the default in brackets so the user can 
 7. Which camera angle? [the closest existing camera module]. If the user has a reference image with the angle they want, ask for it.
 8. Where will it be published? Marketplaces and ad catalogs have their own main-image rules (white background, no text, no badges); check them before choosing the composition.
 
+If a supplied photo is meant to define the product's final perspective, record it
+as `camera.reference` with `camera.module = "reference-perspective"`. A product
+held in a hand may be such a view reference: match the product's angle and
+foreshortening, keeping the hand only if requested in the output. Establish its
+role from the brief; clarify when the intended result is ambiguous.
+
+For a person scene, establish adult subject, wearing/holding/using interaction,
+crop, setting and physical scale/fit. Ask for known dimensions if required for a
+credible result, and an authorized appearance/pose reference only when needed.
+Record these in `[person]`; choose the camera for the brief, not the product
+category of the bundled example. See [perspective-and-person.md](perspective-and-person.md).
+
 ## Colour lock (skip if the colour is already correct in the photo)
 9. Which part must have an exact colour? (lenses, fabric, glaze...)
 10. Is there a colour sample image? Without one, describe the colour in words and list the near-miss colours to avoid.

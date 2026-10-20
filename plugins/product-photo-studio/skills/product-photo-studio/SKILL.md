@@ -1,11 +1,17 @@
 ---
 name: product-photo-studio
-description: Create product packshots, colour variants, macro details and lifestyle images from reference photos using Gemini on Vertex AI, with modular prompts, logo guidance, request previews and local usage limits. Use for product image generation or product logo placement; not for unrelated image generation.
+description: Create product packshots, perspective-matched renders, colour variants, macro details and on-person images from reference photos using Gemini on Vertex AI. Use for product image generation or product logo placement, with modular prompts, request previews and local usage limits.
 ---
 
 # Product Photo Studio
 
 The supplied product photo is the source of truth. The model may change the scene, light and camera; it must not redesign the product. Prefer deterministic editing (crop, composite, masked recolour) whenever it can do the job, and use generation only for a genuinely new angle, scene, person or macro.
+
+Separate reference roles: the product image establishes identity and construction;
+a perspective image establishes the desired product view; an optional adult-person
+image establishes the requested appearance/pose. A photo of a product held in a
+hand can be a perspective reference without requesting a hand in the output.
+Do not default to an eyewear-specific camera module for other products.
 
 ## Workflow
 
@@ -15,7 +21,16 @@ Use [references/intake.md](references/intake.md) to identify missing information
 
 ### 2. Write the job file
 
-Copy `examples/orange-lens-eyewear/job.toml` next to the user's images and fill it from the answers. Each section picks one module from `assets/modules/<section>/`; set `module = "none"` to skip a section. Read [references/prompt-modules.md](references/prompt-modules.md) when you need a module that does not exist yet.
+Choose a starting example and copy its `job.toml` next to the user's images:
+`examples/perspective-product/` for matching a product view (including a hand-held
+reference), `examples/on-person/` for wearing/holding/using a product, or
+`examples/orange-lens-eyewear/` for that specific shot. Each section picks one
+module from `assets/modules/<section>/`; set `module = "none"` to skip a section.
+Read [references/prompt-modules.md](references/prompt-modules.md) when adding a module.
+
+For view matching and person scenes, read [references/perspective-and-person.md](references/perspective-and-person.md).
+Reuse supplied decisions and authorization; example products, dimensions and poses
+are illustrative and must be replaced with the user's product facts.
 
 ### 3. Build the prompt
 

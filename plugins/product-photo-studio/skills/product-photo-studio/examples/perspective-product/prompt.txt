@@ -1,0 +1,27 @@
+REFERENCE IMAGES (in the order supplied)
+- Image 1: the product. Copy it exactly.
+- Image 2: product perspective only: match viewpoint, orientation and foreshortening. Product identity comes from the product reference. Do not copy hands, people or background unless requested in the PERSON section.
+
+Create one premium, photorealistic image of the ceramic mug shown in Image 1, in the requested presentation.
+
+PRODUCT LOCK
+Treat Image 1 as the source of product identity, not as design inspiration. Preserve its geometry, proportions, materials, construction details and surface finish, including the handle shape, rim thickness, glaze and base profile. For requested wearing or handling, allow physically necessary drape or articulation without changing the product's construction. Do not redesign, simplify, stylize, improve or reinterpret the product. Do not add, remove or duplicate any part.
+
+CAMERA: MATCH THE PRODUCT PERSPECTIVE REFERENCE
+Orientation rule: left and right mean the viewer's left and right in the finished image.
+
+Use Image 2 to reproduce the product's orientation relative to the camera: the visible faces, rotation, tilt, roll, camera elevation and foreshortening. Product construction and identity come from Image 1. Do not replace the requested view with a standard three-quarter pose or flatten its perspective to a telephoto look.
+
+1:1 composition: one mug, centred with breathing room around the whole silhouette
+Match the visible inner rim and handle orientation in the perspective reference. Remove the hand from the final isolated product image.
+
+A product held in a hand can be a perspective reference. Transfer that product view; do not transfer the hand, person, props or background unless the PERSON section explicitly requests them. Keep the product physically plausible when transferring the view into a new scene.
+
+BACKGROUND AND LIGHTING
+Perfectly seamless, completely uniform pure-white background, sRGB #FFFFFF. The product floats with no visible support. No floor, tabletop, wall, horizon, backdrop edge, studio environment, scenery or contact shadow.
+
+Soft, high-key, diffuse studio lighting with a neutral white balance (about 6500 K) and no colour cast. Add subtle, controlled reflections on glazed ceramic that describe each material accurately. Keep strong highlights off the centre of any transparent part. Clean luxury e-commerce styling, no creative colour grading.
+
+TEXT AND EXCLUSIONS
+No text, letters, numbers, captions, product names, colour names, labels, badges or watermarks anywhere in the image. The only permitted marks are those described in the LOGO section or physically present on the product.
+No people, hands, faces, mannequins, props, pedestals, stands or second products. No duplicated, missing, warped or disconnected parts. No dust, particles, sparkles, smoke, haze, lens flare, light leaks, chromatic aberration, grain or noise. No scratches, fingerprints or smudges.

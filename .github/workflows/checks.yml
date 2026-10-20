@@ -39,7 +39,9 @@ jobs:
             python "$(dirname "$(dirname "$dir")")/scripts/build_prompt.py" "$job" > /tmp/prompt.txt
             diff -u "$dir/prompt.txt" /tmp/prompt.txt
           done
-      - name: Offline safety and workflow tests
+      - name: Install local imaging dependencies
+        run: pip install Pillow 'resvg-py>=0.5.0,<0.6'
+      - name: Offline safety, SVG and perspective tests
         run: python -m unittest discover -s tests -v
       - name: Generator preview runs without credentials
         run: |

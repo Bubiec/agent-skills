@@ -1,42 +1,94 @@
-# Logos on generated products
+# Logos: SVG export and deterministic placement
 
-Image models treat a logo as a texture they are free to "improve". Letters drift, symbols get simplified, and a logo can end up mirrored or on the wrong part. Three things reduce that.
+Use `preserve` to retain an existing mark, or `replace` to ask the model to apply
+supplied artwork. For faithful lettering, composite the artwork locally instead.
 
-## 1. Give the model a clean PNG, not the SVG
+## Automatic SVG reference export
 
-Gemini image models accept PNG, JPEG and WEBP; SVG is rejected. Export the vector at a generous size, crop it tight with a small margin, and flatten it onto a plain background that contrasts with the mark (white for a dark logo, mid grey for a white one). A transparent PNG can arrive as black-on-black.
+Install `requirements.txt`. The local renderer is `resvg-py`; no browser,
+system Inkscape installation or cloud call is needed. In the job TOML:
 
-```bash
-# Inkscape
-inkscape logo.svg --export-type=png --export-width=1024 --export-background=white --export-filename=logo.png
-# or resvg
-resvg --width 1024 --background white logo.svg logo.png
+```toml
+[logo]
+module = "preserve"  # or replace, with its placement fields
+file = "logo.svg"
+export_width = 1024
+export_background = "#808080"  # useful for white artwork; default: white
 ```
 
-Use the exact logo colour if the print should match it; otherwise export it in the colour it will have on the product.
+`build_prompt.py job.toml --out out` exports to `out/references/logo.png` and
+points the manifest at the PNG. A text-only build prints without rendering or
+writing files. Rebuilding reuses an identical export but refuses to overwrite
+a different one. Choose a new output directory when changing the logo.
 
-## 2. Say where, how big and how it is made
+Standalone transparent export:
 
-The `replace` module needs:
+```bash
+python scripts/export_svg.py logo.svg logo.png --width 1024
+```
 
-| Key | Example |
-|---|---|
-| `surface` | the outer side of the camera-near temple arm |
-| `position` | starting about 15 mm behind the hinge, centred on the height of the arm |
-| `size` | about 12–15% of the visible length of the arm |
-| `finish` | a crisp, slightly glossy pad print / a shallow laser engraving / a blind emboss |
-| `color` | exactly the colour of the supplied artwork |
-| `not_on` | parts where the model tends to put a second copy |
+Add `--background white` for an opaque reference. SVGs must be self-contained:
+convert text to vector paths and remove external fonts, images and stylesheets.
+This preserves lettering across machines. Originals are never overwritten.
 
-Describe the surface in camera terms ("camera-near", "on the right side of the image"), not wearer or product terms. The camera module must actually show that surface; if it faces away from the camera, no prompt will save the logo.
+## Scripted perspective placement
 
-`replace` also removes the old marking from that surface. If the reference photo shows the old logo large and sharp, the model may blend the two; a reference with a plain surface works better.
+Start with an approved render whose target surface has no old logo. The script
+does not erase old markings, find the surface automatically or simulate engraving.
+Choose four pixel coordinates on the oriented base. List artwork corners in order:
+**top-left, top-right, bottom-right, bottom-left**, even on a sloping surface.
 
-## 3. When it still fails: composite instead of generating
+Save `placement.toml` next to the files:
 
-If two or three attempts still change the letterforms, stop spending on retries:
+```toml
+base = "approved-render.png"
+logo = "logo.svg"  # exported transparently in memory; PNG also works
+output = "branded.png"
+quad = [[330, 214], [620, 176], [622, 218], [331, 256]]
+blend = "normal"  # normal for opaque artwork; multiply for dark ink
+opacity = 0.88
+shadow_opacity = 0.15  # optional, default 0; printed ink often needs none
+shadow_blur = 0.8
+shadow_offset = [1, 2]
+```
 
-1. Generate the image with `[logo] module = "none"` and a reference whose logo surface is plain (or add "the outer side of the temple arm is plain, with no markings" to `camera.pose_notes`).
-2. Place the PNG logo on the approved render in an image editor: perspective transform onto the surface, match the curvature, multiply or overlay blend for prints, a slight inner shadow for engravings.
+```bash
+python scripts/composite_logo.py placement.toml
+```
 
-A composited logo is pixel-exact and reusable across a whole image series, which is usually what a brand needs.
+Paths are relative to the placement file. Coordinates refer to the base after
+EXIF orientation is applied. Transparent artwork margins are cropped: the corners
+bound visible artwork. The transform is a planar homography, so choose a locally
+flat surface. It cannot wrap around a strongly curved arm or pass behind an
+occluding part. Split or mask those cases in an image editor.
+
+The output is lossless PNG with the base alpha channel and ICC profile retained.
+Use artwork in a matching colour space (normally sRGB); automatic colour profile
+conversion is not performed. Pixels outside the logo and optional shadow remain
+unchanged in the oriented, decoded base. Resampling changes edge pixels as needed
+for perspective. Inspect small lettering at full resolution before approval.
+
+`branded.placement.json` records settings and input/output SHA-256 hashes.
+Inputs and earlier outputs are never overwritten. Shadow is a simple drop shadow,
+not a physical engraving or lighting reconstruction.
+
+## Reproducible example
+
+From the skill directory:
+
+```bash
+python examples/logo-placement/create_demo.py --out out/logo-demo
+```
+
+Open `out/logo-demo/comparison.png`. The example creates a synthetic slanted
+surface and uses original vector artwork, with no private product references.
+
+## Generative replacement
+
+The `replace` module requires `surface`, `position`, `size`, `finish`, `color`
+and `not_on`. Describe locations in camera terms, such as "camera-near temple
+arm", and check that the camera shows it. If two or three authorized attempts
+still alter lettering, use a clean surface and deterministic placement.
+
+References: [resvg-py](https://resvg-py.readthedocs.io/en/stable/usage.html) and
+[Pillow transforms](https://pillow.readthedocs.io/en/stable/reference/ImageTransform.html).

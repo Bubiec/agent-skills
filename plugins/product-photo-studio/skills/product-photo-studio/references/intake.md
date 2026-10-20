@@ -24,7 +24,7 @@ Ask these in one message, grouped, with the default in brackets so the user can 
     - keep it as it is on the photo → `preserve` (a high-resolution logo file still helps)
     - put a different or cleaner logo on the product → `replace`
 13. If yes: where on the product, how big, which finish (print, engraving, embossing, label) and which colour?
-14. Is the logo file SVG? Then export it to PNG first (see `logo.md`).
+14. Is the logo file SVG? The builder exports it automatically with `--out` (see `logo.md`). For local placement, ask for the clean base image and four target corners; SVG can be used directly.
 
 ## Budget and account
 15. ● Is a Google Cloud project with Vertex AI and billing ready? If not, walk through `vertex-setup.md` first.

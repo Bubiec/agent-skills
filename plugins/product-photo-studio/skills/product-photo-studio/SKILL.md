@@ -47,7 +47,13 @@ Check every result at full resolution with [references/qa.md](references/qa.md).
 
 ## Logos
 
-Logos are the most common failure. Read [references/logo.md](references/logo.md) before any job with `[logo]`. Image models do not accept SVG; export the logo to PNG first.
+Read [references/logo.md](references/logo.md) for SVG export and logo placement.
+The builder automatically exports SVG logo references to PNG when `--out` is set.
+For a clean approved render, prefer `scripts/composite_logo.py placement.toml` to
+apply exact artwork with perspective, opacity and optional shadow. Ask for missing
+surface coordinates rather than inventing a location. This local path needs no
+Vertex account or generation budget. It supports flat surfaces, not automatic
+curvature or occlusion reconstruction.
 
 ## Rules
 

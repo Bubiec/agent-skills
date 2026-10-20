@@ -117,8 +117,20 @@ def main() -> None:
             continue
         path = (base / raw).resolve()
         if path.suffix.lower() == ".svg":
-            raise SystemExit(f"{raw}: image models do not accept SVG. Export it to PNG first (see references/logo.md).")
-        if path.suffix.lower() not in ACCEPTED_IMAGE_TYPES:
+            if section != "logo":
+                raise SystemExit(f"{raw}: product and colour references must be raster images")
+            if not args.out:
+                # A text-only preview neither loads the renderer nor writes files.
+                warnings.append("SVG logo will be exported automatically when --out is supplied")
+            else:
+                from export_svg import export_svg
+                target = args.out / "references" / "logo.png"
+                try:
+                    path = export_svg(path, target, lookup(values, "logo.export_width") or 1024,
+                                      lookup(values, "logo.export_background") or "white", reuse_identical=True).resolve()
+                except (ValueError, RuntimeError) as exc:
+                    raise SystemExit(str(exc)) from exc
+        if path.suffix.lower() not in ACCEPTED_IMAGE_TYPES and path.suffix.lower() != ".svg":
             raise SystemExit(f"{raw}: use PNG, JPEG or WEBP")
         if not path.is_file():
             warnings.append(f"reference not found yet: {raw}")

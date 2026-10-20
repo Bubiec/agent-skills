@@ -2,7 +2,8 @@
 
 Copyright (c) 2026 Szymon Bubała
 
-Everything in this repository that is not code is licensed under the
+Except for the demonstration images and Biohac branding in `docs/gallery/`,
+everything in this repository that is not code is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/)
 ([full legal text](https://creativecommons.org/licenses/by/4.0/legalcode)). That covers:
 
@@ -12,6 +13,10 @@ Everything in this repository that is not code is licensed under the
 - `README.md` and other documentation.
 
 Code (`*.py` files and CI workflows) is licensed under the MIT License in [LICENSE](LICENSE).
+
+The product photos, generated result images and branding in `docs/gallery/`
+are excluded from CC BY 4.0 and provided only as workflow demonstrations.
+See [gallery usage notes](docs/gallery/README.md#usage).
 
 ## How to credit
 

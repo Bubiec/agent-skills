@@ -1,0 +1,51 @@
+# Catalog render of a pair of glasses with orange tinted lenses and a replaced temple logo.
+# Paths are relative to this file. Put your own images in refs/ (the folder is git-ignored).
+#
+#   python ../../scripts/build_prompt.py job.toml --out out
+#   python ../../scripts/generate.py --job out/job.json --output-dir out        # free preview
+#   python ../../scripts/generate.py --job out/job.json --output-dir out --execute
+
+[job]
+name = "orange-lens-eyewear"
+model = "gemini-3.1-flash-image"   # gemini-3-pro-image for finals
+aspect_ratio = "1:1"
+image_size = "2K"
+
+[product]
+noun = "eyeglasses"
+reference = "refs/product.png"
+details = "the frame shape, lens shape, bridge, hinges, temple arms, nose pads and frame thickness"
+materials = "metal, lenses and acetate"
+
+[camera]
+module = "eyewear-three-quarter-low"
+fill_percent = 80
+
+[background]
+module = "pure-white"
+
+[color_lock]
+module = "translucent-tint"
+part = "lenses"
+color = "vivid, saturated orange"
+description = "a clean, bright warm orange, closer to a classic orange blue-light-blocking lens than to a pale yellow, amber or brown lens"
+see_through = "the inner temple arms, the nose pads and subtle reflections"
+reference = "refs/lens-color.png"
+avoid = [
+  "yellow", "pale amber", "red", "coral pink", "brown", "gold", "green",
+  "fluorescent", "mirrored", "metallic", "smoky grey", "fully opaque",
+  "dark like sunglasses",
+]
+
+[logo]
+module = "replace"                  # none | preserve | replace
+file = "refs/logo.png"              # PNG export of logo.svg, see references/logo.md
+surface = "the outer side of the camera-near temple arm"
+position = "starting about 15 mm behind the hinge, centred on the height of the temple arm"
+size = "about 12–15% of the visible length of the temple arm"
+finish = "a crisp, slightly glossy pad print"
+color = "exactly the colour of the supplied artwork"
+not_on = ["the lenses", "the frame front", "the bridge", "the far temple arm"]
+
+[exclusions]
+module = "isolated-product"

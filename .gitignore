@@ -1,0 +1,25 @@
+# Your own images and generation runs never belong in this repository
+refs/
+out/
+outputs/
+request.json
+response.txt
+generated-*.*
+*.jsonl
+
+# Secrets and local config
+.env
+.env.*
+*.key
+*credentials*.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

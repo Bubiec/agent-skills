@@ -1,0 +1,50 @@
+REFERENCE IMAGES (in the order supplied)
+- Image 1: the product. Copy it exactly.
+- Image 2: colour sample. Take only the colour from it, not its shape, background or lighting.
+- Image 3: logo artwork. Reproduce it exactly; it is an approved mark, not a design suggestion.
+
+Create one premium, photorealistic CGI product render of the eyeglasses shown in Image 1.
+
+PRODUCT LOCK
+Treat Image 1 as a measured object, not as inspiration. Preserve its exact geometry, proportions, materials, construction details and surface finish, including the frame shape, lens shape, bridge, hinges, temple arms, nose pads and frame thickness. Do not redesign, simplify, stylize, improve or reinterpret the product. Do not add, remove or duplicate any part.
+
+CAMERA AND PRODUCT PERSPECTIVE
+Orientation rule for this whole prompt: "left" and "right" mean the left and right side of the finished image as the viewer sees it, never the wearer's left and right.
+
+1:1 product image. The product floats in mid-air, seen from a slightly low front three-quarter angle.
+
+The frame front is turned about 15–20° to the camera. The lens on the right side of the image is closest to the camera and looks slightly larger; the lens on the left side recedes and looks slightly smaller. Keep the frame front nearly horizontal, its top edge rising only very slightly toward the right.
+
+Place the camera just below the horizontal centreline of the product and tilt it up by about 5–8°, so a small part of the underside of the frame front, the nose pads and the inner temple surfaces is visible.
+
+Both temple arms are fully open. The camera-near temple arm, attached on the right side of the image, runs backward and diagonally toward the upper right, its tip pointing down. The far temple arm passes behind the frame and runs backward toward the lower left, its curved tip turning slightly back toward the viewer. Keep this asymmetric, open-wing silhouette.
+
+The product spans about 80% of the image width, centred slightly below the vertical midpoint, with generous white space, most of it above the product. Use an 85 mm full-frame-equivalent lens with no wide-angle distortion. Keep the whole product in sharp focus.
+
+BACKGROUND AND LIGHTING
+Perfectly seamless, completely uniform pure-white background, sRGB #FFFFFF. The product floats with no visible support. No floor, tabletop, wall, horizon, backdrop edge, studio environment, scenery or contact shadow.
+
+Soft, high-key, diffuse studio lighting with a neutral white balance (about 6500 K) and no colour cast. Add subtle, controlled reflections on metal, lenses and acetate that describe each material accurately. Keep strong highlights off the centre of any transparent part. Clean luxury e-commerce styling, no creative colour grading.
+
+LENSES: STRICT COLOUR LOCK
+Give the lenses a vivid, saturated orange tint: a clean, bright warm orange, closer to a classic orange blue-light-blocking lens than to a pale yellow, amber or brown lens. Hue, saturation and optical density must be identical across all lenses, with no gradient, vignette or ombré.
+Match the colour in Image 2 exactly. Use that image for colour only.
+
+Keep the lenses realistically translucent, not flat or painted: the inner temple arms, the nose pads and subtle reflections must stay visible through them. Keep natural optical depth and reflections.
+
+Do not make the lenses yellow, pale amber, red, coral pink, brown, gold, green, fluorescent, mirrored, metallic, smoky grey, fully opaque or dark like sunglasses. Keep this exact colour across the whole image series.
+
+LOGO
+Image 3 is the logo artwork. It is a finished, approved mark, not a design suggestion.
+Remove any existing logo, print or marking from the outer side of the camera-near temple arm and apply the logo from Image 3 there instead. The camera position above must show that surface clearly.
+- Position: starting about 15 mm behind the hinge, centred on the height of the temple arm.
+- Size: about 12–15% of the visible length of the temple arm.
+- Orientation: along the long axis of the part it sits on, upright and readable, never mirrored or upside down.
+- Finish: a crisp, slightly glossy pad print, in exactly the colour of the supplied artwork, following the curvature of the surface and lit like the surrounding material.
+
+Copy the artwork exactly: shapes, proportions, letterforms, spacing and orientation. Do not redraw, simplify, stylize, translate or misspell it.
+Show the logo exactly once, in that position only. Do not place it on the lenses, the frame front, the bridge or the far temple arm, nor anywhere else in the image.
+
+TEXT AND EXCLUSIONS
+No text, letters, numbers, captions, product names, colour names, labels, badges or watermarks anywhere in the image. The only permitted marks are those described in the LOGO section or physically present on the product.
+No people, hands, faces, mannequins, props, pedestals, stands or second products. No duplicated, missing, warped or disconnected parts. No dust, particles, sparkles, smoke, haze, lens flare, light leaks, chromatic aberration, grain or noise. No scratches, fingerprints or smudges.

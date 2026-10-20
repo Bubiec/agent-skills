@@ -1,0 +1,51 @@
+name: checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  examples:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Example prompts match their job files
+        run: |
+          set -e
+          for job in plugins/*/skills/*/examples/*/job.toml; do
+            dir=$(dirname "$job")
+            python "$(dirname "$(dirname "$dir")")/scripts/build_prompt.py" "$job" > /tmp/prompt.txt
+            diff -u "$dir/prompt.txt" /tmp/prompt.txt
+          done
+      - name: Offline safety and workflow tests
+        run: python -m unittest discover -s tests -v
+      - name: Generator preview runs without credentials
+        run: |
+          set -e
+          skill=plugins/product-photo-studio/skills/product-photo-studio
+          mkdir -p /tmp/refs
+          printf '\x89PNG\r\n\x1a\n' > /tmp/refs/product.png
+          python $skill/scripts/generate.py --prompt "smoke test" --reference /tmp/refs/product.png --output-dir /tmp/out
+          test -f /tmp/out/request.json

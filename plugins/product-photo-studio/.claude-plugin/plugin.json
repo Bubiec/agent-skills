@@ -1,7 +1,7 @@
 {
   "name": "product-photo-studio",
-  "description": "Product images from a real product photo with Gemini on Vertex AI: intake interview, modular prompt builder with colour and logo locks, free request previews and local request limits.",
-  "version": "0.1.0",
+  "description": "Product packshots, perspective-matched renders and on-person images with Gemini on Vertex AI: modular prompts, reference roles, free request previews and local request limits.",
+  "version": "0.2.0",
   "author": {
     "name": "Szymon Bubała",
     "url": "https://storekite.ai"
@@ -9,5 +9,11 @@
   "homepage": "https://github.com/Bubiec/agent-skills",
   "repository": "https://github.com/Bubiec/agent-skills",
   "license": "MIT AND CC-BY-4.0",
-  "keywords": ["product-photography", "ecommerce", "image-generation", "gemini", "vertex-ai"]
+  "keywords": [
+    "product-photography",
+    "ecommerce",
+    "image-generation",
+    "gemini",
+    "vertex-ai"
+  ]
 }

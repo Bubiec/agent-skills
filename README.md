@@ -15,6 +15,15 @@ public skill is called `product-photo-studio`. Start with photos that show the
 actual product, choose the image you need, then review the result against those
 references before using it.
 
+The skill works with different product categories. The glasses below are real
+examples, not a restriction on what you can photograph.
+
+**Give each reference a role:** a product photo defines what to preserve; a
+perspective photo defines the product view to reproduce; an optional adult-person
+reference defines the requested appearance/pose. An **in-hand perspective shot**
+can establish the angle and foreshortening for an isolated render. It does not
+ask the model to include the hand in the final image.
+
 [Real examples](#real-examples-input--output) · [Available options](#available-options) · [Try it](#try-it) · [Install](#install) · [Video walkthrough](https://www.youtube.com/watch?v=lbtC4doWymo)
 
 ### Real examples: input → output
@@ -30,9 +39,9 @@ from the bundled `job.toml`, nor a promise that one call reproduces them exactly
 The side close-up supplies the logo and hinge detail; the other views show
 the front, back, temples and lens tint.
 
-| Front | Logo / hinge | Back | Side | In hand |
+| Front | Logo / hinge | Back | Side | Perspective reference (held) |
 |---|---|---|---|---|
-| <img src="docs/gallery/mentor/input-01.jpg" alt="Input: Mentor front view photographed on cardboard" width="180"> | <img src="docs/gallery/mentor/input-02.jpg" alt="Input: close-up of the Biohac logo and Mentor hinge" width="180"> | <img src="docs/gallery/mentor/input-03.jpg" alt="Input: Mentor rear view on cardboard" width="180"> | <img src="docs/gallery/mentor/input-04.jpg" alt="Input: Mentor temple and side profile on cardboard" width="180"> | <img src="docs/gallery/mentor/input-05.jpg" alt="Input: Mentor held up to show the lenses and frame" width="180"> |
+| <img src="docs/gallery/mentor/input-01.jpg" alt="Input: Mentor front view photographed on cardboard" width="180"> | <img src="docs/gallery/mentor/input-02.jpg" alt="Input: close-up of the Biohac logo and Mentor hinge" width="180"> | <img src="docs/gallery/mentor/input-03.jpg" alt="Input: Mentor rear view on cardboard" width="180"> | <img src="docs/gallery/mentor/input-04.jpg" alt="Input: Mentor temple and side profile on cardboard" width="180"> | <img src="docs/gallery/mentor/input-05.jpg" alt="Perspective reference: Mentor held at the desired product angle, not a request to include the hand" width="180"> |
 
 **Output:** an isolated product image and, in a separate step, a set composition.
 The set uses the product image plus an existing accessory visual, shown below.
@@ -54,9 +63,9 @@ Example request to the agent:
 different bridge, nose pads and thin temples; the agent should preserve those
 details rather than reuse the Mentor shape.
 
-| In hand | Front | Three-quarter | Side | Back |
+| Perspective reference (held) | Front | Three-quarter | Side | Back |
 |---|---|---|---|---|
-| <img src="docs/gallery/eclipse/input-01.jpg" alt="Input: Eclipse held in hand" width="180"> | <img src="docs/gallery/eclipse/input-02.jpg" alt="Input: round Eclipse frame from the front on cardboard" width="180"> | <img src="docs/gallery/eclipse/input-03.jpg" alt="Input: Eclipse bridge, nose pads and lenses at an angle" width="180"> | <img src="docs/gallery/eclipse/input-04.jpg" alt="Input: Eclipse thin metal temples from the side" width="180"> | <img src="docs/gallery/eclipse/input-05.jpg" alt="Input: Eclipse viewed from behind" width="180"> |
+| <img src="docs/gallery/eclipse/input-01.jpg" alt="Perspective reference: Eclipse held at the desired product angle, not a request to include the hand" width="180"> | <img src="docs/gallery/eclipse/input-02.jpg" alt="Input: round Eclipse frame from the front on cardboard" width="180"> | <img src="docs/gallery/eclipse/input-03.jpg" alt="Input: Eclipse bridge, nose pads and lenses at an angle" width="180"> | <img src="docs/gallery/eclipse/input-04.jpg" alt="Input: Eclipse thin metal temples from the side" width="180"> | <img src="docs/gallery/eclipse/input-05.jpg" alt="Input: Eclipse viewed from behind" width="180"> |
 
 | Output: isolated product | Output: set with accessories, separate step |
 |---|---|
@@ -97,12 +106,13 @@ examples. No new images were generated to build this gallery.
 | What you want | What you supply / choose | What is included today |
 |---|---|---|
 | Clean catalog image | Product reference, required details, angle | Product lock, white-background module, studio and eyewear camera modules; see both packshots above |
+| Match a specific perspective | Product reference plus the view to reproduce, including a photo held in hand | `reference-perspective` camera module: product orientation, visible faces and foreshortening; no hand in the result unless requested |
 | A different crop or format | Intended placement and aspect ratio | Square, portrait, landscape and wide output ratios; choose each request's format |
 | Colour variant | The exact part and a colour sample or description | Translucent-tint and solid-finish prompt modules; review colour against the sample |
 | Macro / construction detail | Product reference and the area to show | Macro camera module and generator `macro` mode; do not invent hidden construction |
 | Product with accessories | Approved product image, accessory references and exact contents | Custom composition prompt; the set examples above are a separate workflow step, not an automatic bundle preset |
-| Adult wearing / using the product | Approved product reference and scene description | Generator `person` mode with product-preservation and anatomy guidance |
-| Lifestyle or social image | Product, scene, composition and target format | Custom prompt through the generator; add a reusable scene module when needed |
+| Adult wearing / holding / using the product | Product reference, interaction, scale/fit and optional authorized adult reference | `product-use` person module, `person-context` camera and `person-product` exclusions; also available through direct generator `person` mode |
+| Lifestyle or social image | Product, scene, light, composition and target format | `environment` background module or custom prompt; combine with a person when requested |
 | Keep or replace a logo | Logo file, location, size, finish and colour | `preserve` / `replace` prompt modules; SVG reference export; local perspective placement on flat surfaces |
 
 **Controls you can set:**
@@ -112,17 +122,20 @@ examples. No new images were generated to build this gallery.
 | Generation model | `gemini-3.1-flash-image` or `gemini-3-pro-image` on Vertex AI |
 | Output ratio | `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`, `21:9` |
 | Resolution | `1K`, `2K`, `4K`; Flash also accepts `512`. Paid 4K requires explicit authorization and `--allow-4k` |
-| Camera module | `three-quarter-studio`, `eyewear-three-quarter-low`, `macro-detail` |
-| Background module | `pure-white` included; other scenes need a custom prompt/module |
+| Camera module | `reference-perspective`, `person-context`, `three-quarter-studio`, `eyewear-three-quarter-low`, `macro-detail` |
+| Background module | `pure-white`, `environment` (scene and light from your brief) |
+| Person module | `product-use`: adult subject, wearing/holding/using, scale/fit and optional appearance/pose reference |
 | Colour module | `translucent-tint`, `solid-finish`, or skip the section |
 | Logo module | `preserve`, `replace`, or skip the section; a local compositor is also included |
 | Direct generator mode | `product`, `person`, `macro`, `none`; built jobs use `none` because their prompts already contain the locks |
-| References | Repeat `--reference` for multiple views; the bundled job builder has product, colour-sample and logo reference slots |
+| References | The job builder has product, perspective, person, colour-sample and logo slots; direct generation also accepts repeated `--reference` |
 | Attempts | One `--execute` makes one paid attempt; the agent can plan more within your approved budget |
 
 See the [module guide](plugins/product-photo-studio/skills/product-photo-studio/references/prompt-modules.md)
-for the exact fields. Lifestyle, set and social prompts are custom instructions;
-the repository does not include one-click presets for every example. Marketplace
+for the exact fields, and the [perspective/person guide](plugins/product-photo-studio/skills/product-photo-studio/references/perspective-and-person.md)
+for reference roles and natural product interaction. Set compositions remain
+custom instructions; the repository does not include a preset for the accessory
+sets shown above. Marketplace
 or ad-catalog acceptance needs its own check before publication.
 
 ### Try it
@@ -136,7 +149,8 @@ After [installing the skill](#install), give the agent your references and a con
 For a different use, change the requested result:
 
 - **Detail:** “Show a close-up of this hinge. Keep the construction and logo exactly as in the reference.”
-- **On a person:** “Show an adult wearing these glasses in a home-office scene, 4:5. Preserve the frame and lens tint.”
+- **Perspective:** “Use this product photo for construction and the photo held in my hand for the final view. Match that angle and foreshortening on white, without the hand.”
+- **On a person:** “Show an adult wearing this shoulder bag, 4:5. Preserve its construction and size; keep the strap resting naturally on the shoulder.”
 - **Set:** “Use this approved product image and these accessory references for a set image. Include exactly the listed items.”
 - **Wide image:** “Place this product in a 21:9 composition with empty space above it. I will add the headline afterwards.”
 
@@ -180,6 +194,13 @@ intake questions → job.toml → build_prompt.py → prompt.txt → generate.py
 - **Money is guarded in layers**: preview by default, `--execute` for every paid call, local daily and monthly request limits, an extra flag for 4K, and a setup guide for a dedicated project with quotas.
 
 See [examples/orange-lens-eyewear](plugins/product-photo-studio/skills/product-photo-studio/examples/orange-lens-eyewear) for a full job file and the prompt it produces.
+
+Two generic starting jobs are also included, each with its built prompt:
+[perspective-product](plugins/product-photo-studio/skills/product-photo-studio/examples/perspective-product)
+(a mug, using a separate view reference) and
+[on-person](plugins/product-photo-studio/skills/product-photo-studio/examples/on-person)
+(a shoulder bag worn by an adult). Supply your own references and replace the
+illustrative product facts with your brief. Both can be built with `build_prompt.py`.
 
 ### Local logo placement, no image generation
 

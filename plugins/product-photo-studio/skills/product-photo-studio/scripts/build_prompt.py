@@ -23,12 +23,14 @@ SKILL_DIR = Path(__file__).resolve().parent.parent
 MODULES_DIR = SKILL_DIR / "assets" / "modules"
 
 # Section order in the final prompt. Each section is optional except product.
-SECTIONS = ["product", "camera", "background", "color_lock", "logo", "exclusions"]
+SECTIONS = ["product", "camera", "person", "background", "color_lock", "logo", "exclusions"]
 DEFAULT_MODULES = {"product": "product-lock"}
 
 # Reference images, in the order they are sent to the model.
 REFERENCE_SLOTS = [
     ("product", "reference", "the product. Copy it exactly."),
+    ("camera", "reference", "product perspective only: match viewpoint, orientation and foreshortening. Product identity comes from the product reference. Do not copy hands, people or background unless requested in the PERSON section."),
+    ("person", "reference", "approved adult-person reference: use the requested appearance and pose for the PERSON section. Product identity comes from the product reference."),
     ("color_lock", "reference", "colour sample. Take only the colour from it, not its shape, background or lighting."),
     ("logo", "file", "logo artwork. Reproduce it exactly; it is an approved mark, not a design suggestion."),
 ]
@@ -110,6 +112,17 @@ def main() -> None:
         values = tomllib.load(handle)
     base = job_file.parent
 
+    camera_module = lookup(values, "camera.module")
+    if camera_module == "reference-perspective" and not lookup(values, "camera.reference"):
+        raise SystemExit("[camera] reference-perspective requires reference: supply the target product-view image")
+    if lookup(values, "camera.reference") and camera_module in (None, "three-quarter-studio", "eyewear-three-quarter-low", "macro-detail", "person-context"):
+        raise SystemExit("[camera] reference requires module = 'reference-perspective' to avoid a conflicting fixed camera angle")
+    person_module = lookup(values, "person.module")
+    if lookup(values, "person.reference") and not person_module:
+        raise SystemExit("[person] reference requires a person module, such as 'product-use'")
+    if person_module and person_module != "none" and lookup(values, "exclusions.module") == "isolated-product":
+        raise SystemExit("[person] product-use conflicts with [exclusions] isolated-product, which forbids people and hands; use person-product instead")
+
     references, ref_labels, warnings = [], {}, []
     for section, key, role in REFERENCE_SLOTS:
         raw = lookup(values, f"{section}.{key}")
@@ -118,7 +131,7 @@ def main() -> None:
         path = (base / raw).resolve()
         if path.suffix.lower() == ".svg":
             if section != "logo":
-                raise SystemExit(f"{raw}: product and colour references must be raster images")
+                raise SystemExit(f"{raw}: only logo references can use SVG; use a raster image for [{section}]")
             if not args.out:
                 # A text-only preview neither loads the renderer nor writes files.
                 warnings.append("SVG logo will be exported automatically when --out is supplied")

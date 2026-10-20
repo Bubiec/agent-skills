@@ -19,6 +19,12 @@ reference. They should not be presented as a single-call output from the phone
 photos alone. The on-model picture predates these phone inputs; its original
 inputs are not in this collection.
 
+The held views (`mentor/input-05.jpg`, `eclipse/input-01.jpg`) specify the desired
+perspective of the product: orientation, visible surfaces and foreshortening.
+Their role is not to request a hand in the isolated render. Product construction
+is established by the other reference views. This distinction also applies to
+other product categories.
+
 These are historical workflow examples, not execution receipts for the public
 `orange-lens-eyewear/job.toml`. Exact original prompts, model versions and attempt
 counts are not provided by this gallery. A visual example does not prove that a

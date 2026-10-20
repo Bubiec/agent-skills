@@ -10,6 +10,9 @@ Review at full resolution, next to the references. A result that looks great but
 - text, badges, watermarks or props appear that nobody asked for;
 - the background is not uniform or shows an edge, floor or shadow when the job asked for pure white;
 - a person shows implausible anatomy or product contact (glasses floating off the ears, fingers through a handle).
+- a supplied perspective reference is replaced by a different product rotation, visible surfaces or foreshortening, or the item is mirrored;
+- an input hand/background is copied into an isolated product render when it was supplied only to establish perspective;
+- a worn, held or used product has the wrong scale, unsupported weight, implausible contact or incorrect drape/articulation.
 
 ## Comparison prompt
 

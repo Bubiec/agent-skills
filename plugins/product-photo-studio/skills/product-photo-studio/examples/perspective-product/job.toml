@@ -1,0 +1,24 @@
+# Illustrative generic product, not a Biohac item. Supply your own refs/ images.
+# A hand in the perspective photo establishes the view; it is not requested in the output.
+[job]
+name = "perspective-product"
+aspect_ratio = "1:1"
+image_size = "2K"
+
+[product]
+noun = "ceramic mug"
+reference = "refs/product.jpg"
+details = "the handle shape, rim thickness, glaze and base profile"
+materials = "glazed ceramic"
+
+[camera]
+module = "reference-perspective"
+reference = "refs/perspective.jpg"
+framing = "one mug, centred with breathing room around the whole silhouette"
+pose_notes = "Match the visible inner rim and handle orientation in the perspective reference. Remove the hand from the final isolated product image."
+
+[background]
+module = "pure-white"
+
+[exclusions]
+module = "isolated-product"

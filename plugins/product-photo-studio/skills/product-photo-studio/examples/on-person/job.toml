@@ -1,0 +1,32 @@
+# Illustrative bag brief, not a real product claim. Replace it with the user's facts.
+# No person or product image is included. Use an authorized adult reference, or omit person.reference.
+[job]
+name = "on-person"
+aspect_ratio = "4:5"
+image_size = "2K"
+
+[product]
+noun = "canvas shoulder bag"
+reference = "refs/product.jpg"
+details = "the panel seams, strap attachment points, buckle, pocket count and canvas texture"
+
+[camera]
+module = "person-context"
+view = "eye-level front three-quarter view"
+framing = "adult from shoulders to mid-thigh, with the whole bag and its strap visible"
+focus = "the bag's fabric, hardware and attachment points"
+
+[person]
+module = "product-use"
+reference = "refs/person.jpg"
+description = "an adult wearing a plain unbranded shirt"
+interaction = "wearing the bag on one shoulder, strap resting on the shoulder and bag supported naturally at the hip"
+scale = "32 cm wide and 24 cm high, as specified in this illustrative brief; do not enlarge it to fill the frame"
+
+[background]
+module = "environment"
+scene = "a simple studio with a neutral grey backdrop"
+light = "soft daylight from camera left with coherent contact shadows"
+
+[exclusions]
+module = "person-product"

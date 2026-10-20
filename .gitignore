@@ -1,4 +1,4 @@
-# Your own images and generation runs never belong in this repository
+# Private references and generation runs stay local. Curated public demos live in docs/gallery/.
 refs/
 out/
 outputs/

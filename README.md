@@ -5,6 +5,7 @@ Skills for AI agents that read `SKILL.md` (Claude Code, Codex and others), taken
 | Skill | What it does |
 |---|---|
 | [product-photo-studio](plugins/product-photo-studio/skills/product-photo-studio/SKILL.md) | Product images from a real product photo with Gemini on Vertex AI: an intake interview, a modular prompt builder with colour and logo locks, free request previews, local request limits and a review checklist. |
+| [checklist-card](plugins/checklist-card/skills/checklist-card/SKILL.md) | Turns any checklist from notes, a document or a photo into a printable 5-step double-sided card, 76 x 86 mm on A4, without inventing steps. The format comes from a magnetic holder prototype that has not been fit-tested yet. |
 
 ## Fotogen / Product Photo Studio
 
@@ -176,9 +177,10 @@ Use your own product references for commercial work.
 ```
 /plugin marketplace add Bubiec/agent-skills
 /plugin install product-photo-studio@bubiec
+/plugin install checklist-card@bubiec
 ```
 
-**Codex**: copy `plugins/product-photo-studio/skills/product-photo-studio` into `~/.codex/skills/`.
+**Codex**: copy a skill folder, such as `plugins/product-photo-studio/skills/product-photo-studio`, into `~/.codex/skills/`.
 
 **Any other agent**: copy the skill folder into your project and add one line to your `AGENTS.md` (or equivalent) pointing product-image tasks at its `SKILL.md`.
 

@@ -1,0 +1,16 @@
+{
+  "pull": "↑ Pull out",
+  "cards": [
+    {
+      "title": "Before leaving home",
+      "back_title": "Before leaving",
+      "steps": [
+        "Charge the electronics",
+        "Close the windows",
+        "Check the heating and the hob",
+        "Water the plants",
+        "Lock the door"
+      ]
+    }
+  ]
+}

@@ -22,6 +22,20 @@
         "gemini",
         "vertex-ai"
       ]
+    },
+    {
+      "name": "checklist-card",
+      "source": "./plugins/checklist-card",
+      "description": "Turn any checklist (notes, a document, a photo) into a printable 5-step, double-sided card: 76 x 86 mm on A4, with cut lines and a matching back.",
+      "version": "0.1.0",
+      "category": "productivity",
+      "keywords": [
+        "checklist",
+        "printable",
+        "productivity",
+        "adhd",
+        "a4"
+      ]
     }
   ]
 }

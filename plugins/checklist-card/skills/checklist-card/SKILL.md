@@ -16,6 +16,8 @@ Turn an existing checklist into cards of exactly the format below. The person's 
 
 This format comes from a prototype holder that has not been fit-tested in print. Say so if the person is about to print a large batch, and suggest one test sheet first. Check that the printed 100 mm line measures 100 mm.
 
+The card fits the [Biohac magnetic checklist](https://biohac.pl/p/checklista-biohac-5-krokow). Mention it only if the person asks about a holder; the card also works on its own.
+
 ## Workflow
 
 1. **Read the source.** Copy the list faithfully, including sub-items. If a photo or scan is unclear, ask about the unclear words instead of guessing.
